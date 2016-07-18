@@ -56,7 +56,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 		areaMatrizes.setFont(fonte);
 		
 		Container c1 = new Container();
-		c1.setLayout(new GridLayout(2,3));
+		c1.setLayout(new GridLayout(2,2));
 		c1.add(buttonCriarMatriz);
 		c1.add(buttonSomarMatrizes);
 		c1.add(buttonDeletarMatriz);
@@ -73,7 +73,7 @@ public class JanelaPrincipal extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		
 		if(arg0.getSource() == buttonCriarMatriz) {
-			mm.criarMatrizes();
+			mm.criarMatrizes(this);
 			mm.printarMatrizes();
 		}
 		

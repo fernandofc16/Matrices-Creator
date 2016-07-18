@@ -1,5 +1,6 @@
 package Classes;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class ManipulaçãoMatriz {
@@ -16,8 +17,12 @@ public class ManipulaçãoMatriz {
 				for(int i = 0; i < mtz.getLinha(); i++) {
 					JanelaPrincipal.areaMatrizes.append("\n" + "{");
 					for(int j = 0; j < mtz.getColuna(); j++) {
-						JanelaPrincipal.areaMatrizes.append(" " + mtz.getMatriz()[i][j] + "," );
-						if(j == mtz.getColuna() - 1) {JanelaPrincipal.areaMatrizes.append("}"); }
+						JanelaPrincipal.areaMatrizes.append(" " + mtz.getMatriz()[i][j]);
+						if(j == mtz.getColuna() - 1) {
+							JanelaPrincipal.areaMatrizes.append(" }"); 
+						} else {
+							JanelaPrincipal.areaMatrizes.append(",");
+						}
 					}
 				}
 				JanelaPrincipal.matrizesPrintadas.add(mtz);
@@ -26,26 +31,16 @@ public class ManipulaçãoMatriz {
 
 	}
 	
-	public Matrizes criarMatriz(String nome, int linha, int coluna, int[][] numbMatriz) {
-		
+	public Matrizes criarMatriz(String nome, int linha, int coluna, int[][] numbMatriz) {	
 		return new Matrizes(nome, linha, coluna, numbMatriz);
 	}
 	
-	public void criarMatrizes() {
+	public void criarMatrizes(JFrame parent) {
 		
 		String nomeDaMatriz = JOptionPane.showInputDialog(null, "Digite o nome da matriz a ser criada: ");
 		String numeroLinhas = JOptionPane.showInputDialog(null, "Digite o número de linhas da matriz: ");
 		String numeroColunas = JOptionPane.showInputDialog(null, "Digite o número de colunas da matriz: ");
-		int[][] valores = new int[Integer.parseInt(numeroLinhas)][Integer.parseInt(numeroColunas)];
-		
-		for(int i = 0; i < Integer.parseInt(numeroLinhas); i++) {
-			for(int j = 0; j < Integer.parseInt(numeroColunas); j++) {
-				valores[i][j] = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o valor do número " + i + "," + j + " da sua matriz:"));
-			}
-		}
-		
-		Matrizes matrizCriada = new ManipulaçãoMatriz().criarMatriz(nomeDaMatriz, Integer.parseInt(numeroLinhas), Integer.parseInt(numeroColunas), valores);
-		JanelaPrincipal.matrizesCriadas.add(matrizCriada); 
+		new JanelaAtributosMatrizes(nomeDaMatriz, Integer.parseInt(numeroLinhas), Integer.parseInt(numeroColunas), parent, this);
 		
 	}
 	

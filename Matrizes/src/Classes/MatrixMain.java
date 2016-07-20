@@ -1,10 +1,10 @@
 package Classes;
 
-public class MatrizMain {
+public class MatrixMain {
 
 	public static void main(String[] args) {
 		
-		new JanelaPrincipal();
+		new MainWindow();
 		
 	}
 

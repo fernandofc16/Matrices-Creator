@@ -1,16 +1,20 @@
 package Classes;
 
-public class Matrizes {
+public class Matrices {
 
 	private String nome;
 	private int linha, coluna;
 	private int[][] matriz;
+	private int biggestNumberValue, determinant;
+	private boolean hasDeterminant;
 	
-	public Matrizes(String nome, int linha, int coluna, int[][] numbMatriz) {
+	public Matrices(String nome, int linha, int coluna, int[][] numbMatriz, int biggestNumberValue) {
 		this.nome = nome;
 		this.linha = linha;
 		this.coluna = coluna;
 		this.matriz = new int[linha][coluna];
+		this.biggestNumberValue = biggestNumberValue;
+		hasDeterminant = false;
 		
 		for(int i = 0; i < linha; i++) {
 			for(int j = 0; j < coluna; j++) {
@@ -51,6 +55,24 @@ public class Matrizes {
 		this.matriz = matriz;
 	}
 	
+	public int getBiggestNumberValue() {
+		return biggestNumberValue;
+	}
 	
+	public void setBiggestNumberValue(int biggestNumberValue) {
+		this.biggestNumberValue = biggestNumberValue;
+	}
 	
+	public int getDeterminant() {
+		return determinant;
+	}
+	
+	public void setDeterminant(int determinant) {
+		this.determinant = determinant;
+		hasDeterminant = true;
+	}
+	
+	public boolean getHasDeterminant() {
+		return hasDeterminant;
+	}
 }

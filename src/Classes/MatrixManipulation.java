@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 public class MatrixManipulation {
 	
-	private Matrices matriz1, matriz2, mtzDeletar, matrizT, matrixOp;
+	private Matrices matrix1, matrix2, matrixDelete, matrixTransposed, matrixOpposite;
 	private ArrayList<String> matricesCreated = new ArrayList<>();
 	private String[] matricesNames;
 
@@ -19,53 +19,53 @@ public class MatrixManipulation {
 		return matricesNames;
 	}
 	
-	public void printarMatrizes() {
+	public void printMatrices() {
 
-		for (Matrices mtz : MainWindow.matrizesCriadas) {
-			if(!MainWindow.matrizesPrintadas.contains(mtz)) {
-				if(!MainWindow.areaMatrizes.getText().isEmpty()) { MainWindow.areaMatrizes.append("\n"); }
-				MainWindow.areaMatrizes.append(mtz.getNome() + ":");
+		for (Matrices mtz : MainWindow.matricesCreated) {
+			if(!MainWindow.matricesShown.contains(mtz)) {
+				if(!MainWindow.areaMatrices.getText().isEmpty()) { MainWindow.areaMatrices.append("\n"); }
+				MainWindow.areaMatrices.append(mtz.getName() + ":");
 
-				for(int i = 0; i < mtz.getLinha(); i++) {
-					MainWindow.areaMatrizes.append("\n" + "{");
-					for(int j = 0; j < mtz.getColuna(); j++) {
-						for(int space = 0; space < (mtz.getBiggestNumberValue() - String.valueOf(mtz.getMatriz()[i][j]).length()); space++) {
-							MainWindow.areaMatrizes.append("  ");
+				for(int i = 0; i < mtz.getRow(); i++) {
+					MainWindow.areaMatrices.append("\n" + "{");
+					for(int j = 0; j < mtz.getColumn(); j++) {
+						for(int space = 0; space < (mtz.getBiggestNumberValue() - String.valueOf(mtz.getMatrix()[i][j]).length()); space++) {
+							MainWindow.areaMatrices.append("  ");
 						}
-						MainWindow.areaMatrizes.append(" " + mtz.getMatriz()[i][j]);
-						if(j == mtz.getColuna() - 1) {
-							MainWindow.areaMatrizes.append(" }"); 
+						MainWindow.areaMatrices.append(" " + mtz.getMatrix()[i][j]);
+						if(j == mtz.getColumn() - 1) {
+							MainWindow.areaMatrices.append(" }");
 						} else {
-							MainWindow.areaMatrizes.append(",");
+							MainWindow.areaMatrices.append(",");
 						}
 					}
 				}
-				MainWindow.matrizesPrintadas.add(mtz);
+				MainWindow.matricesShown.add(mtz);
 			}
 		}
 
 	}
 	
-	public Matrices criarMatriz(String nome, int linha, int coluna, int[][] numbMatriz, int biggestNumberValue) {	
-		return new Matrices(nome, linha, coluna, numbMatriz, biggestNumberValue);
+	public Matrices createMatrix(String name, int row, int column, int[][] numberMatrix, int biggestNumberValue) {
+		return new Matrices(name, row, column, numberMatrix, biggestNumberValue);
 	}
 	
-	public void criarMatrizes(JFrame parent) {
-		String numeroLinhas = "";
-		String numeroColunas = "";
-		String nomeDaMatriz = JOptionPane.showInputDialog(null, "Digite o nome da matriz a ser criada: ");
-		if(!matricesCreated.contains(nomeDaMatriz)) {
-			if(nomeDaMatriz != null) {
-				while(!numeroLinhas.matches("[0-9]+")) {
-					numeroLinhas = JOptionPane.showInputDialog(null, "Digite o número de linhas da matriz: ");
+	public void createMatrices(JFrame parent) {
+		String rowNumber = "";
+		String columnNumber = "";
+		String matrixName = JOptionPane.showInputDialog(null, "Type the name of the matrix to be created: ");
+		if(!matricesCreated.contains(matrixName)) {
+			if(matrixName != null) {
+				while(!rowNumber.matches("[0-9]+")) {
+					rowNumber = JOptionPane.showInputDialog(null, "Type tha number of rows: ");
 				}
-				if(numeroLinhas != null) {
-					while(!numeroColunas.matches("[0-9]+")) {
-						numeroColunas = JOptionPane.showInputDialog(null, "Digite o número de colunas da matriz: ");
+				if(rowNumber != null) {
+					while(!columnNumber.matches("[0-9]+")) {
+						columnNumber = JOptionPane.showInputDialog(null, "Type the number of columns: ");
 					}
-					if(numeroColunas != null) {
-						new WindowMatricesValues(nomeDaMatriz, Integer.parseInt(numeroLinhas), Integer.parseInt(numeroColunas), parent, this);
-						matricesCreated.add(nomeDaMatriz);
+					if(columnNumber != null) {
+						new WindowMatricesValues(matrixName, Integer.parseInt(rowNumber), Integer.parseInt(columnNumber), parent, this);
+						matricesCreated.add(matrixName);
 					}
 				}
 			}
@@ -74,26 +74,26 @@ public class MatrixManipulation {
 		}
 	}
 	
-	public void deletarMatriz() {
+	public void deleteMatrix() {
 		
-		String nomeMatrizDeletar = JOptionPane.showInputDialog(null, "Digite o nome da matriz a ser deletada: ");
-		if(nomeMatrizDeletar != null) {
-			mtzDeletar = null;
-			for (Matrices matrizDel : MainWindow.matrizesCriadas) {
-				for(int i = 0; i < MainWindow.matrizesCriadas.size(); i++) {
-					if(matrizDel.getNome().equals(String.valueOf(nomeMatrizDeletar))) { 
-						mtzDeletar = matrizDel;
+		String nameMatrixDelete = JOptionPane.showInputDialog(null, "Type the name of the matrix to be deleted: ");
+		if(nameMatrixDelete != null) {
+			matrixDelete = null;
+			for (Matrices matrixDel : MainWindow.matricesCreated) {
+				for(int i = 0; i < MainWindow.matricesCreated.size(); i++) {
+					if(matrixDel.getName().equals(String.valueOf(nameMatrixDelete))) {
+						matrixDelete = matrixDel;
 					}
 				}
 			}
 			
-			if(mtzDeletar != null) {
-				MainWindow.matrizesCriadas.remove(mtzDeletar);
-				MainWindow.matrizesPrintadas.clear();
-				MainWindow.areaMatrizes.setText("");
-				printarMatrizes();
+			if(matrixDelete != null) {
+				MainWindow.matricesCreated.remove(matrixDelete);
+				MainWindow.matricesShown.clear();
+				MainWindow.areaMatrices.setText("");
+				printMatrices();
 			} else {
-				JOptionPane.showMessageDialog(null, "Nenhuma matriz encontrada com esse nome", "ERROR", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "No matrix was found with this name", "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -125,60 +125,60 @@ public class MatrixManipulation {
 		//2 for multiplication
 		int biggestNumberValue = 0;
 		if(matricesNames != null) {
-			for (Matrices matrices : MainWindow.matrizesCriadas) {
+			for (Matrices matrices : MainWindow.matricesCreated) {
 				
-				if(matrices.getNome().equalsIgnoreCase(matricesNames[0])) {
-					matriz1 = matrices;
+				if(matrices.getName().equalsIgnoreCase(matricesNames[0])) {
+					matrix1 = matrices;
 				}
 				
-				if(matrices.getNome().equalsIgnoreCase(matricesNames[1])) {
-					matriz2 = matrices;
+				if(matrices.getName().equalsIgnoreCase(matricesNames[1])) {
+					matrix2 = matrices;
 				}
 				
 			}
 			
 			if(whichOperation == 1 || whichOperation == 0) {
 			
-				if(matriz1.getLinha() == matriz2.getLinha() && matriz1.getColuna() == matriz2.getColuna()) {
+				if(matrix1.getRow() == matrix2.getRow() && matrix1.getColumn() == matrix2.getColumn()) {
 					
-					int[][] matriz3 = new int[matriz1.getLinha()][matriz1.getColuna()];			
-					for(int i = 0; i < matriz1.getLinha(); i ++) {
-						for(int j = 0; j < matriz1.getColuna(); j++) {
+					int[][] matrix3 = new int[matrix1.getRow()][matrix1.getColumn()];
+					for(int i = 0; i < matrix1.getRow(); i ++) {
+						for(int j = 0; j < matrix1.getColumn(); j++) {
 							if(whichOperation == 1) {
-								matriz3[i][j] = matriz1.getMatriz()[i][j] + matriz2.getMatriz()[i][j];
+								matrix3[i][j] = matrix1.getMatrix()[i][j] + matrix2.getMatrix()[i][j];
 							} else {
-								matriz3[i][j] = matriz1.getMatriz()[i][j] - matriz2.getMatriz()[i][j];
+								matrix3[i][j] = matrix1.getMatrix()[i][j] - matrix2.getMatrix()[i][j];
 							}
-							int count = String.valueOf(matriz3[i][j]).length();
+							int count = String.valueOf(matrix3[i][j]).length();
 							if(biggestNumberValue < count) { biggestNumberValue = count; }
 						}
 					}
 					
-					return new Matrices(matricesNames[2], matriz1.getLinha(), matriz1.getColuna(), matriz3, biggestNumberValue);
+					return new Matrices(matricesNames[2], matrix1.getRow(), matrix1.getColumn(), matrix3, biggestNumberValue);
 					
 				} else {
-					JOptionPane.showMessageDialog(null, "As matrizes não possuem as mesmas dimensões", "ERROR", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "The matrices must have the same dimension", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			
 			} else {
 				
-				if(matriz1.getColuna() == matriz2.getLinha()) {
+				if(matrix1.getColumn() == matrix2.getRow()) {
 					
-					int[][] matriz3 = new int[matriz1.getLinha()][matriz2.getColuna()];
-					for(int i = 0; i < matriz1.getLinha(); i++) {
-						for(int j = 0; j < matriz2.getColuna(); j++) {
-							for(int k = 0; k < matriz2.getLinha(); k++) {
-								matriz3[i][j] += (matriz1.getMatriz()[i][k]*matriz2.getMatriz()[k][j]);
-								int count = String.valueOf(matriz3[i][j]).length();
+					int[][] matrix3 = new int[matrix1.getRow()][matrix2.getColumn()];
+					for(int i = 0; i < matrix1.getRow(); i++) {
+						for(int j = 0; j < matrix2.getColumn(); j++) {
+							for(int k = 0; k < matrix2.getRow(); k++) {
+								matrix3[i][j] += (matrix1.getMatrix()[i][k]* matrix2.getMatrix()[k][j]);
+								int count = String.valueOf(matrix3[i][j]).length();
 								if(biggestNumberValue < count) { biggestNumberValue = count; }
 							}
 						}
 					}
 					
-					return new Matrices(matricesNames[2], matriz1.getLinha(), matriz2.getColuna(), matriz3, biggestNumberValue);
+					return new Matrices(matricesNames[2], matrix1.getRow(), matrix2.getColumn(), matrix3, biggestNumberValue);
 					
 				} else {
-					JOptionPane.showMessageDialog(null, "As matrizes não podem ser multiplicadas", "ERROR", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "The multiplication between the matrices cannot be made", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 				
 			}
@@ -190,52 +190,52 @@ public class MatrixManipulation {
 	
 	public Matrices matrixOpposite() {
 		
-		matrixOp = null;
+		matrixOpposite = null;
 		String nameMatrixOpposite = JOptionPane.showInputDialog(null, "Type the name of the matrix you want the opposite");
 		
-		for (Matrices matrices : MainWindow.matrizesCriadas) {
-			if(matrices.getNome().equals(nameMatrixOpposite)) {
-				matrixOp = matrices;
+		for (Matrices matrices : MainWindow.matricesCreated) {
+			if(matrices.getName().equals(nameMatrixOpposite)) {
+				matrixOpposite = matrices;
 			}
 		}
 		
-		if(matrixOp != null) {
-			int[][] matrixOpFinal = new int[matrixOp.getLinha()][matrixOp.getColuna()];
-			for(int i = 0; i < matrixOp.getLinha(); i++) {
-				for(int j = 0; j < matrixOp.getColuna(); j++) {
-					matrixOpFinal[i][j] = matrixOp.getMatriz()[i][j]*(-1);
+		if(matrixOpposite != null) {
+			int[][] matrixOpFinal = new int[matrixOpposite.getRow()][matrixOpposite.getColumn()];
+			for(int i = 0; i < matrixOpposite.getRow(); i++) {
+				for(int j = 0; j < matrixOpposite.getColumn(); j++) {
+					matrixOpFinal[i][j] = matrixOpposite.getMatrix()[i][j]*(-1);
 				}
 			}
-			return new Matrices(nameMatrixOpposite, matrixOp.getLinha(), matrixOp.getColuna(), matrixOpFinal, matrixOp.getBiggestNumberValue());
+			return new Matrices(nameMatrixOpposite, matrixOpposite.getRow(), matrixOpposite.getColumn(), matrixOpFinal, matrixOpposite.getBiggestNumberValue());
 		}
 		
 		return null;
 	}
 	
-	public Matrices matrizTransposta() {
+	public Matrices matrixTransposed() {
 		
-		matrizT = null;
+		matrixTransposed = null;
 		int biggestNumberValue = 0;
-		String nomeMatrizTransp = JOptionPane.showInputDialog(null, "Digite o nome da matriz a ser transpostada");
+		String nameMatrixTransposed = JOptionPane.showInputDialog(null, "Type the name of the matrix to be transposed");
 		
-		for (Matrices matrices : MainWindow.matrizesCriadas) {
-			if(matrices.getNome().equals(nomeMatrizTransp)) {
-				matrizT = matrices;
+		for (Matrices matrices : MainWindow.matricesCreated) {
+			if(matrices.getName().equals(nameMatrixTransposed)) {
+				matrixTransposed = matrices;
 			}
 		}
 		
-		if(matrizT != null) {
-			int[][] matrizTFinal = new int[matrizT.getColuna()][matrizT.getLinha()];
-			for(int i = 0; i < matrizT.getLinha(); i++){
-				for(int j = 0; j < matrizT.getColuna(); j++) {
-					matrizTFinal[j][i] = matrizT.getMatriz()[i][j];
-					int count = String.valueOf(matrizT.getMatriz()[i][j]).length();
+		if(matrixTransposed != null) {
+			int[][] finalMatrix = new int[matrixTransposed.getColumn()][matrixTransposed.getRow()];
+			for(int i = 0; i < matrixTransposed.getRow(); i++){
+				for(int j = 0; j < matrixTransposed.getColumn(); j++) {
+					finalMatrix[j][i] = matrixTransposed.getMatrix()[i][j];
+					int count = String.valueOf(matrixTransposed.getMatrix()[i][j]).length();
 					if(biggestNumberValue < count) { biggestNumberValue = count; }
 				}
 			}
-			return new Matrices(nomeMatrizTransp+"T", matrizT.getColuna(), matrizT.getLinha(), matrizTFinal, biggestNumberValue);
+			return new Matrices(nameMatrixTransposed+"T", matrixTransposed.getColumn(), matrixTransposed.getRow(), finalMatrix, biggestNumberValue);
 		} else {
-			JOptionPane.showMessageDialog(null, "Nenhuma matriz com esse nome encontrada", "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "No matrix with this name was found", "ERROR", JOptionPane.ERROR_MESSAGE);
 			return null;		
 		}
 	}
@@ -246,22 +246,20 @@ public class MatrixManipulation {
 	    if(matrix.length == 1){  //bottom case of recursion. size 1 matrix determinant is itself.
 	      return(matrix[0][0]);
 	    }
-	    for(int i = 0; i < matrix.length; i++){ //finds determinant using row-by-row expansion
+	    for(int i = 0; i < matrix.length; i++) { //finds determinant using row-by-row expansion
 	      int[][] smaller = new int[matrix.length-1][matrix.length-1]; //creates smaller matrix- values not in same row, column
-	      for(int j = 1; j < matrix.length; j++){
-	        for(int k = 0; k < matrix.length; k++){
-	          if(k < i){
+	      for(int j = 1; j < matrix.length; j++) {
+	        for(int k = 0; k < matrix.length; k++) {
+	          if(k < i) {
 	            smaller[j-1][k] = matrix[j][k];
-	          }
-	          else if(k > i){
+	          } else if(k > i) {
 	            smaller[j-1][k-1] = matrix[j][k];
 	          }
 	        }
 	      }
 	      if(i%2 == 0){ //sign changes based on i
 	        s = 1;
-	      }
-	      else{
+	      } else {
 	        s = -1;
 	      }
 	      sum += s*matrix[0][i]*(matricesDeterminant(smaller)); //recursive step: determinant of larger determined by smaller.

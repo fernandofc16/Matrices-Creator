@@ -2,57 +2,57 @@ package Classes;
 
 public class Matrices {
 
-	private String nome;
-	private int linha, coluna;
-	private int[][] matriz;
+	private String name;
+	private int row, column;
+	private int[][] matrix;
 	private int biggestNumberValue, determinant;
 	private boolean hasDeterminant;
 	
-	public Matrices(String nome, int linha, int coluna, int[][] numbMatriz, int biggestNumberValue) {
-		this.nome = nome;
-		this.linha = linha;
-		this.coluna = coluna;
-		this.matriz = new int[linha][coluna];
+	public Matrices(String nome, int row, int column, int[][] numberMatrix, int biggestNumberValue) {
+		this.name = nome;
+		this.row = row;
+		this.column = column;
+		this.matrix = new int[row][column];
 		this.biggestNumberValue = biggestNumberValue;
 		hasDeterminant = false;
 		
-		for(int i = 0; i < linha; i++) {
-			for(int j = 0; j < coluna; j++) {
-				this.matriz[i][j] = numbMatriz[i][j];
+		for(int i = 0; i < row; i++) {
+			for(int j = 0; j < column; j++) {
+				this.matrix[i][j] = numberMatrix[i][j];
 			}
 		}
 	}
 	
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String nome) {
+		this.name = nome;
 	}
 
-	public int getLinha() {
-		return linha;
+	public int getRow() {
+		return row;
 	}
 
-	public void setLinha(int linha) {
-		this.linha = linha;
+	public void setRow(int row) {
+		this.row = row;
 	}
 
-	public int getColuna() {
-		return coluna;
+	public int getColumn() {
+		return column;
 	}
 
-	public void setColuna(int coluna) {
-		this.coluna = coluna;
+	public void setColumn(int column) {
+		this.column = column;
 	}
 
-	public int[][] getMatriz() {
-		return matriz;
+	public int[][] getMatrix() {
+		return matrix;
 	}
 
-	public void setMatriz(int[][] matriz) {
-		this.matriz = matriz;
+	public void setMatrix(int[][] matrix) {
+		this.matrix = matrix;
 	}
 	
 	public int getBiggestNumberValue() {

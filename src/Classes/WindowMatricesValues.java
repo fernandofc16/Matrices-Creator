@@ -23,21 +23,21 @@ public class WindowMatricesValues extends JDialog implements ActionListener, Key
 	private JTextField[][] arrayJTextField;
 	private int[][] arrayValues;
 	private JButton jbOK, jbCancel;
-	private int linhas, colunas;
+	private int rows, columns;
 	private String name;
-	private MatrixManipulation manMatriz;
+	private MatrixManipulation manMatrix;
 	private Font fontButton, fontJTextField;
 	
-	public WindowMatricesValues(String name, int linhas, int colunas, JFrame parent, MatrixManipulation manMatriz) {
+	public WindowMatricesValues(String name, int rows, int columns, JFrame parent, MatrixManipulation manMatrix) {
 		
-		super(parent, "Atributos Matriz");
+		super(parent, "Matrix Attributes");
 		
 		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		int widthScreen = gd.getDisplayMode().getWidth();
 		int heightScreen = gd.getDisplayMode().getHeight();
 		
-		int widthPropose = 100*colunas;
-		int heightPropose = 100*linhas;
+		int widthPropose = 100*columns;
+		int heightPropose = 100*rows;
 		
 		if(widthPropose > widthScreen) { widthPropose = widthScreen; }
 		if(heightPropose > heightScreen) { heightPropose = heightScreen; }
@@ -52,18 +52,18 @@ public class WindowMatricesValues extends JDialog implements ActionListener, Key
 		fontJTextField = new Font("serif", Font.PLAIN, 30);
 		
 		this.name = name;
-		this.linhas = linhas;
-		this.colunas = colunas;
-		this.manMatriz = manMatriz;
+		this.rows = rows;
+		this.columns = columns;
+		this.manMatrix = manMatrix;
 		
 		setLayout(new BorderLayout());
 		Container contJTextFields = new Container();
-		contJTextFields.setLayout(new GridLayout(linhas, colunas));
+		contJTextFields.setLayout(new GridLayout(rows, columns));
 		
-		arrayValues = new int[linhas][colunas];
-		arrayJTextField = new JTextField[linhas][colunas];
-		for(int i=0;i<linhas;i++) {
-			for(int j=0;j<colunas;j++) {
+		arrayValues = new int[rows][columns];
+		arrayJTextField = new JTextField[rows][columns];
+		for(int i=0;i<rows;i++) {
+			for(int j=0;j<columns;j++) {
 				JTextField jtf = new JTextField();
 				jtf.setFont(fontJTextField);
 				jtf.setHorizontalAlignment(JTextField.CENTER);
@@ -92,8 +92,8 @@ public class WindowMatricesValues extends JDialog implements ActionListener, Key
 	
 	private void makeMatrixThings() {
 		int biggestNumberValue = 0;
-		for(int i=0;i<linhas;i++) {
-			for(int j=0;j<colunas;j++) {
+		for(int i = 0; i< rows; i++) {
+			for(int j = 0; j< columns; j++) {
 				if(arrayJTextField[i][j].getText().trim().equals("")) {
 					arrayValues[i][j] = 0;
 				} else {
@@ -103,9 +103,9 @@ public class WindowMatricesValues extends JDialog implements ActionListener, Key
 				if(biggestNumberValue < count) { biggestNumberValue = count; }
 			}
 		}
-		Matrices matrizCriada = manMatriz.criarMatriz(name, linhas, colunas, arrayValues, biggestNumberValue);
-		MainWindow.matrizesCriadas.add(matrizCriada);
-		manMatriz.printarMatrizes();
+		Matrices matrizCriada = manMatrix.createMatrix(name, rows, columns, arrayValues, biggestNumberValue);
+		MainWindow.matricesCreated.add(matrizCriada);
+		manMatrix.printMatrices();
 	}
 
 	@Override

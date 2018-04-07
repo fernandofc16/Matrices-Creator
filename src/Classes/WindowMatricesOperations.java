@@ -119,15 +119,15 @@ public class WindowMatricesOperations extends JDialog implements ActionListener,
 		matricesNames[1] = matrixB.getText();
 		matricesNames[2] = matrixC.getText();
 		ArrayList<String> matricesNamesCreated = new ArrayList<>();
-		for(Matrices matrix : MainWindow.matrizesCriadas) {
-			matricesNamesCreated.add(matrix.getNome());
+		for(Matrices matrix : MainWindow.matricesCreated) {
+			matricesNamesCreated.add(matrix.getName());
 		}
 		if(!matricesNamesCreated.contains(matricesNames[2])) {
 			mm.setMatricesNames(matricesNames);
 			if(mm.getMatricesNames() != null) {
 				Matrices mtz = mm.sumOrSubMatrices(whichOperation);
-				MainWindow.matrizesCriadas.add(mtz);
-				mm.printarMatrizes();
+				MainWindow.matricesCreated.add(mtz);
+				mm.printMatrices();
 			} 
 		} else {
 			setVisible(false);

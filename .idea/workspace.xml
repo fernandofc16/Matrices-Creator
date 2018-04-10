@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63946bcf-d2ee-4c46-a4db-8cdd64c2f042" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matrizes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Matrizes.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Classes/MatrixManipulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Classes/MatrixManipulation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +26,8 @@
       <file leaf-file-name="MatrixMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Classes/MatrixMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state>
+              <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -42,8 +35,8 @@
       <file leaf-file-name="WindowMatricesOperations.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Classes/WindowMatricesOperations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1606">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            <state relative-caret-position="-671">
+              <caret line="89" column="22" lean-forward="true" selection-start-line="89" selection-start-column="22" selection-end-line="89" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -51,13 +44,21 @@
       <file leaf-file-name="MatrixManipulation.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Classes/MatrixManipulation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="193" column="123" selection-start-line="193" selection-start-column="123" selection-end-line="193" selection-end-column="123" />
+            <state relative-caret-position="390">
+              <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>transpos</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -199,12 +200,12 @@
       <option name="presentableId" value="Default" />
       <updated>1523309668210</updated>
       <workItem from="1523309696343" duration="274000" />
-      <workItem from="1523317190619" duration="749000" />
+      <workItem from="1523317190619" duration="1146000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1023000" />
+    <option name="totallyTimeSpent" value="1420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -270,22 +271,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Classes/MatrixMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state>
+          <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Classes/WindowMatricesOperations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1606">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        <state relative-caret-position="-671">
+          <caret line="89" column="22" lean-forward="true" selection-start-line="89" selection-start-column="22" selection-end-line="89" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Classes/MatrixManipulation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="193" column="123" selection-start-line="193" selection-start-column="123" selection-end-line="193" selection-end-column="123" />
+        <state relative-caret-position="390">
+          <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

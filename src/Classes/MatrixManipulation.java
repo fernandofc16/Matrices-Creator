@@ -7,8 +7,9 @@ import javax.swing.JOptionPane;
 
 public class MatrixManipulation {
 	
-	private Matrices matrix1, matrix2, matrixDelete, matrixTransposed, matrixOpposite;
-	private ArrayList<String> matricesCreated = new ArrayList<>();
+	private Matrices matrix1;
+    private Matrices matrix2;
+    private ArrayList<String> matricesCreated = new ArrayList<>();
 	private String[] matricesNames;
 
 	public void setMatricesNames(String[] matricesNames) {
@@ -59,16 +60,12 @@ public class MatrixManipulation {
 				while(!rowNumber.matches("[0-9]+")) {
 					rowNumber = JOptionPane.showInputDialog(null, "Type tha number of rows: ");
 				}
-				if(rowNumber != null) {
-					while(!columnNumber.matches("[0-9]+")) {
-						columnNumber = JOptionPane.showInputDialog(null, "Type the number of columns: ");
-					}
-					if(columnNumber != null) {
-						new WindowMatricesValues(matrixName, Integer.parseInt(rowNumber), Integer.parseInt(columnNumber), parent, this);
-						matricesCreated.add(matrixName);
-					}
-				}
-			}
+                while(!columnNumber.matches("[0-9]+")) {
+                    columnNumber = JOptionPane.showInputDialog(null, "Type the number of columns: ");
+                }
+                new WindowMatricesValues(matrixName, Integer.parseInt(rowNumber), Integer.parseInt(columnNumber), parent, this);
+                matricesCreated.add(matrixName);
+            }
 		} else {
 			JOptionPane.showMessageDialog(null, "This name is already in use", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
@@ -78,7 +75,7 @@ public class MatrixManipulation {
 		
 		String nameMatrixDelete = JOptionPane.showInputDialog(null, "Type the name of the matrix to be deleted: ");
 		if(nameMatrixDelete != null) {
-			matrixDelete = null;
+            Matrices matrixDelete = null;
 			for (Matrices matrixDel : MainWindow.matricesCreated) {
 				for(int i = 0; i < MainWindow.matricesCreated.size(); i++) {
 					if(matrixDel.getName().equals(String.valueOf(nameMatrixDelete))) {
@@ -189,8 +186,8 @@ public class MatrixManipulation {
 	}
 	
 	public Matrices matrixOpposite() {
-		
-		matrixOpposite = null;
+
+        Matrices matrixOpposite = null;
 		String nameMatrixOpposite = JOptionPane.showInputDialog(null, "Type the name of the matrix you want the opposite");
 		
 		for (Matrices matrices : MainWindow.matricesCreated) {
@@ -213,8 +210,8 @@ public class MatrixManipulation {
 	}
 	
 	public Matrices matrixTransposed() {
-		
-		matrixTransposed = null;
+
+        Matrices matrixTransposed = null;
 		int biggestNumberValue = 0;
 		String nameMatrixTransposed = JOptionPane.showInputDialog(null, "Type the name of the matrix to be transposed");
 		

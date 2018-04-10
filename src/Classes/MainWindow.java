@@ -38,7 +38,7 @@ public class MainWindow extends JFrame implements ActionListener {
 	
 	public MainWindow() {
 		//configs
-		super("Janela Principal");
+		super("Matrices Creator");
 		setSize(700, 900);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);

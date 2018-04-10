@@ -206,7 +206,7 @@ public class MatrixManipulation {
 					matrixOpFinal[i][j] = matrixOpposite.getMatrix()[i][j]*(-1);
 				}
 			}
-			return new Matrices(nameMatrixOpposite, matrixOpposite.getRow(), matrixOpposite.getColumn(), matrixOpFinal, matrixOpposite.getBiggestNumberValue());
+			return new Matrices("-" + nameMatrixOpposite, matrixOpposite.getRow(), matrixOpposite.getColumn(), matrixOpFinal, matrixOpposite.getBiggestNumberValue());
 		}
 		
 		return null;
